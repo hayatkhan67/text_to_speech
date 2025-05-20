@@ -25,8 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'com.ixsans.text_to_speech' // ✅ Required for AGP 7+
-
+    namespace 'com.ixsans.text_to_speech'
     compileSdkVersion 35
 
     defaultConfig {
@@ -35,6 +34,11 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    // ✅ Fix for JVM target issue
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
